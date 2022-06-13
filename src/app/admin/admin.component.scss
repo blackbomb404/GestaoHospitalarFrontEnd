@@ -1,0 +1,45 @@
+mat-sidenav-container,
+mat-sidenav,
+mat-sidenav-content{
+  min-height: 100vh;
+}
+
+$sidemenu-color: #5353d6;
+
+mat-sidenav-container {
+
+  mat-sidenav {
+    width: 300px;
+    background-color: $sidemenu-color;
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    a {
+      color: #fff;
+      padding: 16px 32px;
+      text-decoration: none;
+      width: 100%;
+      text-align: left;
+
+      img {
+        vertical-align: bottom;
+      }
+
+      .text {
+        margin-left: 8px;
+      }
+    }
+    // padding: 16px;
+  }
+}
+.menu {
+  // background-color: $sidemenu-color;
+  border: 1px solid #ccc;
+
+  .hamburger-menu {
+    transform: scale(1.6);
+    margin: 12px;
+  }
+}

@@ -1,0 +1,25 @@
+<main>
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="sideMenuOpened" [mode]="'side'">
+      <nav>
+        <ul>
+          <li *ngFor="let link of sideMenuLinks">
+            <a mat-button [routerLink]="link.routerLink"
+            routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
+              <img [src]="link.icon" alt="sidemenu-icon"> <span class="text">{{link.text}}</span>
+            </a>
+            <mat-divider></mat-divider>
+          </li>
+        </ul>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="menu">
+        <button mat-icon-button color="primary" class="hamburger-menu" (click)="toggleSideMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      content
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main>

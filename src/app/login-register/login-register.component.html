@@ -1,0 +1,99 @@
+<main>
+  <ngx-flip [flip]="flip">
+
+    <div class="login-wrapper" front>
+      <h1>Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+
+          <mat-hint *ngIf="login_email?.errors?.['required']"
+          [class.error]="login_email?.touched">Por favor insira o seu email</mat-hint>
+
+          <mat-hint *ngIf="login_email?.errors?.['email']"
+          [class.error]="login_email?.touched">Por favor insira um email válido</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+
+          <mat-hint *ngIf="login_password?.errors?.['required']"
+          [class.error]="login_password?.touched">Por favor insira a sua password</mat-hint>
+
+          <mat-hint *ngIf="login_password?.errors?.['minlength']"
+          [class.error]="login_password?.touched">A password deve conter no mínimo 6 caracteres</mat-hint>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" routerLink="/admin">Login</button>
+      </form>
+
+      <p class="register-text">
+        Não possui conta ou pretende criar outra? Clique
+        <a (click)="toggleFlip()">aqui</a>
+      </p>
+    </div>
+
+    <div class="register-wrapper" back>
+      <h1>Registro</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Primeiro nome</mat-label>
+          <input matInput formControlName="firstname">
+          <mat-hint *ngIf="register_firstname?.errors?.['required']"
+          [class.error]="register_firstname?.touched">Por favor insira o seu primeiro nome</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Último nome</mat-label>
+          <input matInput formControlName="lastname">
+          <mat-hint *ngIf="register_lastname?.errors?.['required']"
+          [class.error]="register_lastname?.touched">Por favor insira o seu último nome</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-hint *ngIf="register_email?.errors?.['required']"
+          [class.error]="register_email?.touched">Por favor insira o seu email</mat-hint>
+          <mat-hint *ngIf="register_email?.errors?.['email']"
+          [class.error]="register_email?.touched">Por favor insira um email válido</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+
+          <mat-hint *ngIf="register_password?.errors?.['required']"
+          [class.error]="register_password?.touched">Por favor insira a sua password</mat-hint>
+
+          <mat-hint *ngIf="register_password?.errors?.['minlength']"
+          [class.error]="register_password?.touched">A password deve conter no mínimo 6 caracteres</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Confirmação da Password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword">
+
+          <mat-hint *ngIf="register_confirmPassword?.errors?.['required']"
+          [class.error]="register_confirmPassword?.touched">Por favor confirme a password digitada no campo anterior</mat-hint>
+
+          <mat-hint *ngIf="register_password?.errors?.['minlength']"
+          [class.error]="register_password?.touched">A password deve conter no mínimo 6 caracteres</mat-hint>
+
+          <mat-hint *ngIf="registerForm?.errors?.['nonIdenticalPasswords']"
+          [class.error]="register_confirmPassword?.touched">As passwords não coincidem</mat-hint>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="registerForm.invalid">Registrar</button>
+      </form>
+      <p class="login-text">
+        Já possui uma conta e pretende logar? Clique
+        <a (click)="toggleFlip()">aqui</a>
+      </p>
+    </div>
+
+  </ngx-flip>
+</main>
