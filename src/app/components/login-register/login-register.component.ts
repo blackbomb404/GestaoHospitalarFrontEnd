@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { confirmPasswordValidator } from '../types/validators/confirmPassword.validator';
+import { Router } from '@angular/router';
+import { AuthenticationRequest } from '../../models/AuthenticationRequest';
+import { AuthenticationService } from '../../services/authentication.service';
+import { confirmPasswordValidator } from '../../types/validators/confirmPassword.validator';
 
 @Component({
   selector: 'app-login-register',
@@ -12,9 +15,9 @@ export class LoginRegisterComponent implements OnInit {
   registerForm: FormGroup;
   flip: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
@@ -27,8 +30,8 @@ export class LoginRegisterComponent implements OnInit {
     }, { validators: confirmPasswordValidator } );
   }
 
-  get login_email(){
-    return this.loginForm.get('email');
+  get login_username(){
+    return this.loginForm.get('username');
   }
   get login_password(){
     return this.loginForm.get('password');
@@ -54,7 +57,15 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   onLoginSubmit(){
-    console.log(this.loginForm.value);
+    this.authService.authenticate(this.loginForm.value as AuthenticationRequest)
+      .subscribe({
+        next: data => {
+          // console.log(data);
+          console.log('Is user logged in? '+ this.authService.isUserLoggedIn());
+          this.router.navigate(['admin'])
+        },
+        error: error => { console.log(error)}
+      })
   }
   onRegisterSubmit(){
     console.log(this.registerForm.value);

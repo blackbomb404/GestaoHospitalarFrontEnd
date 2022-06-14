@@ -6,14 +6,11 @@
       <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
 
         <mat-form-field appearance="legacy">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email">
+          <mat-label>Nome de usuário</mat-label>
+          <input matInput formControlName="username">
 
-          <mat-hint *ngIf="login_email?.errors?.['required']"
-          [class.error]="login_email?.touched">Por favor insira o seu email</mat-hint>
-
-          <mat-hint *ngIf="login_email?.errors?.['email']"
-          [class.error]="login_email?.touched">Por favor insira um email válido</mat-hint>
+          <mat-hint *ngIf="login_username?.errors?.['required']"
+          [class.error]="login_username?.touched">Por favor insira o seu email</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
@@ -27,7 +24,7 @@
           [class.error]="login_password?.touched">A password deve conter no mínimo 6 caracteres</mat-hint>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid" routerLink="/admin">Login</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
       </form>
 
       <p class="register-text">

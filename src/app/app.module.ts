@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginRegisterComponent } from './login-register/login-register.component';
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { FlipModule } from 'ngx-flip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,12 +14,16 @@ import { AdminComponent } from './admin/admin.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtAuthHttpInterceptorService } from './services/jwt-auth-http-interceptor.service';
+import { LogOutComponent } from './components/log-out/log-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
-    AdminComponent
+    AdminComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +37,12 @@ import { MatIconModule } from '@angular/material/icon';
     FlipModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtAuthHttpInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
