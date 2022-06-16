@@ -12,6 +12,46 @@ mat-sidenav-container {
     width: 300px;
     background-color: $sidemenu-color;
 
+    .sidenav-headers {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, .4);
+      margin: 0 24px 0;
+      font-weight: 500;
+    }
+
+    .avatar{
+      padding: 32px 16px 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 24px;
+
+      .profile-photo {
+        $size: 64px;
+        width: $size;
+        height: $size;
+
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+      }
+      .info {
+        $text-color: rgba(255, 255, 255, .8);
+        color: $text-color;
+        font-size: .85rem;
+
+        .username {
+          color: #ffbf00;
+        }
+        .role {
+          font-style: italic;
+          color: transparentize($text-color, .2);
+          font-weight: 300;
+        }
+      }
+
+    }
+
     nav ul {
       list-style: none;
       padding: 0;

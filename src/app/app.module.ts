@@ -17,13 +17,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtAuthHttpInterceptorService } from './services/jwt-auth-http-interceptor.service';
 import { LogOutComponent } from './components/log-out/log-out.component';
+import { PatientComponent } from './patient/patient.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
     AdminComponent,
-    LogOutComponent
+    LogOutComponent,
+    PatientComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,10 @@ import { LogOutComponent } from './components/log-out/log-out.component';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtAuthHttpInterceptorService, multi: true }

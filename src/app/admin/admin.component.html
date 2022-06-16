@@ -1,8 +1,19 @@
 <main>
   <mat-sidenav-container>
     <mat-sidenav [opened]="sideMenuOpened" [mode]="'side'">
+      <div class="avatar">
+
+        <img [src]="user.profilePhoto" alt="profile photo" class="profile-photo">
+        <div class="info">
+          <p>Seja bem vindo <span class="username">{{user.username}}</span></p>
+          <p class="role">{{user.role}}</p>
+        </div>
+
+      </div>
+
       <nav>
         <ul>
+          <h5 class="sidenav-headers">Menu</h5>
           <li *ngFor="let link of sideMenuLinks">
             <a mat-button [routerLink]="link.routerLink"
             routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">
@@ -20,7 +31,7 @@
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      content
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </main>

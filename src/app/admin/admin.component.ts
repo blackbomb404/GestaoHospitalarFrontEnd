@@ -10,10 +10,15 @@ import { AuthenticationService } from '../services/authentication.service';
 export class AdminComponent implements OnInit {
   sideMenuOpened: boolean = true;
   sideMenuLinks = [
-    { text: 'Pacientes', routerLink: '/admin', icon: 'assets/icons/patient.png' },
-    { text: 'Médicos', routerLink: '/admin', icon: 'assets/icons/doctor.png' },
-    { text: 'Especialidades', routerLink: '/admin', icon: 'assets/icons/stethoscope.png' }
+    { text: 'Pacientes', routerLink: 'patient', icon: 'assets/icons/patient.png' },
+    { text: 'Médicos', routerLink: 'medic', icon: 'assets/icons/doctor.png' },
+    { text: 'Especialidades', routerLink: 'specialty', icon: 'assets/icons/stethoscope.png' }
   ]
+  user = {
+    profilePhoto: 'assets/images/profile-photo.jpg',
+    username: 'Black Bahm',
+    role: 'ADMIN'
+  }
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 
