@@ -19,9 +19,18 @@ import { JwtAuthHttpInterceptorService } from './services/jwt-auth-http-intercep
 import { LogOutComponent } from './components/log-out/log-out.component';
 import { PatientComponent } from './patient/patient.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { PatientDialogComponent } from './patient-dialog/patient-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PatientCardComponent } from './patient-card/patient-card.component';
+import { MedicComponent } from './medic/medic.component';
+import { MedicCardComponent } from './medic-card/medic-card.component';
+import { SpecialtyComponent } from './specialty/specialty.component';
+import { MedicDialogComponent } from './medic-dialog/medic-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +39,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     AdminComponent,
     LogOutComponent,
     PatientComponent,
-    EditDialogComponent
+    PatientDialogComponent,
+    SearchBarComponent,
+    PatientCardComponent,
+    MedicComponent,
+    MedicCardComponent,
+    SpecialtyComponent,
+    MedicDialogComponent,
+    DeleteConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +64,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtAuthHttpInterceptorService, multi: true }

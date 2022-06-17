@@ -1,0 +1,29 @@
+@use '../sass/entities.scss';
+
+.listing-area {
+  // display: block;
+  mat-list {
+    max-width: 1120px;
+
+    ::ng-deep .mat-list-item-content {
+      justify-content: space-between;
+    }
+
+    mat-list-item {
+      $border: 1px solid rgba(0, 0, 0, .15);
+      // border-top: $border;
+      border-bottom: $border;
+      padding: 16px 0;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .04);
+      }
+
+      .actions {
+        display: flex;
+        gap: 16px;
+      }
+
+    }
+  }
+}

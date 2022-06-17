@@ -1,0 +1,18 @@
+<div class="card">
+  <span class="label">Primeiro nome:</span>
+  <strong>{{medic.firstname | uppercase}}</strong>
+  <span class="label">Último nome:</span>
+  <strong>{{medic.lastname | uppercase}}</strong>
+  <span class="label">Especialidade</span>
+  <strong>{{medic.specialty.value}}</strong>
+
+  <div class="actions">
+    <button mat-mini-fab color="primary" (click)="edit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" (click)="delete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+</div>

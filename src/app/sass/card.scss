@@ -1,0 +1,22 @@
+.card {
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  padding: 8px;
+
+  .label {
+    color: rgba(0, 0, 0, .5);
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    // text-align: end;
+    padding: 12px 12px 12px 0;
+  }
+}

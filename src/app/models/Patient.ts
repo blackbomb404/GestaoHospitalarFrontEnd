@@ -1,6 +1,5 @@
-export interface Patient {
-  id: number;
-  firstname: string;
-  lastname: string;
+import { Person } from "./Person";
+
+export interface Patient extends Person {
   birthdate: Date;
 }

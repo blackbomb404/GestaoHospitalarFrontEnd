@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -16,11 +16,15 @@ export class AdminComponent implements OnInit {
   ]
   user = {
     profilePhoto: 'assets/images/profile-photo.jpg',
-    username: 'Black Bahm',
+    username: 'blackbomb404',
     role: 'ADMIN'
   }
+  entity: string = '';
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }

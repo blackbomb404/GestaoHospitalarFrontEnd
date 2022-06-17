@@ -1,0 +1,6 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit()" class="searchForm">
+  <mat-form-field appearance="legacy" class="searchField">
+    <mat-label>{{placeholder}}</mat-label>
+    <input type="search" matInput [(ngModel)]="searchValue" name="searchValue" (keypress)="onKeyPress($event)">
+  </mat-form-field>
+</form>

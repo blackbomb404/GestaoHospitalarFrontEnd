@@ -1,0 +1,19 @@
+.root {
+  padding: 32px;
+
+  .result-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+    gap: 16px;
+    justify-content: center;
+    max-width: 1300px;
+  }
+
+  .addNew {
+    margin-bottom: 24px;
+  }
+}
+
+::ng-deep .mat-tooltip {
+  font-size: .75rem !important;
+}

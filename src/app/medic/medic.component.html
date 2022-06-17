@@ -1,0 +1,12 @@
+<section class="root">
+  <app-search-bar placeholder="Pesquise pelo nome do médico..."></app-search-bar>
+  <button mat-fab color="primary" class="addNew" matTooltip="Clique para adicionar um novo médico" (click)="addNewMedic()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <section class="result-area">
+    <ng-container *ngFor="let medic of medics">
+      <app-medic-card [medic]="medic"></app-medic-card>
+    </ng-container>
+  </section>
+
+</section>

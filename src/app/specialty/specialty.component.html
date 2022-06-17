@@ -1,0 +1,25 @@
+<section class="root">
+  <app-search-bar placeholder="Pesquise aqui pela especialidade médica..."></app-search-bar>
+  <button mat-fab color="primary" class="addNew" matTooltip="Clique para adicionar uma nova especialidade" (click)="addNewSpecialty()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <section class="listing-area">
+    <mat-list>
+      <mat-list-item *ngFor="let specialty of specialties">
+
+        <span class="specialty-value">{{specialty.value}}</span>
+
+        <div class="actions">
+          <button mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
+      </mat-list-item>
+    </mat-list>
+  </section>
+
+</section>
