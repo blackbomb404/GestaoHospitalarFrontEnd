@@ -1,5 +1,6 @@
 import { Person } from "./Person";
+import { Specialty } from "./Specialty";
 
 export interface Medic extends Person {
-  specialty: { id: number, value: string};
+  specialty: Specialty;
 }

@@ -17,7 +17,7 @@
       <mat-label>Especialidade</mat-label>
       <mat-select formControlName="specialtyId">
         <mat-option [value]="specialty.id" *ngFor="let specialty of specialties">
-          {{specialty.value}}
+          {{specialty.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -26,6 +26,9 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="submit.click()" [disabled]="form.invalid">Actualizar</button>
+  <button mat-raised-button matDialogClose color="primary" (click)="submit.click()" [disabled]="form.invalid">
+    {{data.mode === 'update' ? 'Actualizar' : 'Salvar' }}
+  </button>
   <button mat-raised-button matDialogClose color="warn">Cancelar</button>
+  {{form.value | json}}
 </mat-dialog-actions>

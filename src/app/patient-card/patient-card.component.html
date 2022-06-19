@@ -5,6 +5,7 @@
   <strong>{{patient.lastname | uppercase}}</strong>
   <span class="label">Idade</span>
   <strong>{{calculateAge(patient.birthdate)}}</strong>
+  <!-- <strong>{{patient.birthdate | json}}</strong> -->
 
   <div class="actions">
     <button mat-mini-fab color="primary" (click)="edit()">

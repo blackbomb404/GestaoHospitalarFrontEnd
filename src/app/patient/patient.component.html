@@ -1,12 +1,16 @@
 <section class="root">
-  <app-search-bar placeholder="Pesquise pelo nome do paciente..."></app-search-bar>
+  <app-search-bar target="patient" placeholder="Pesquise pelo primeiro nome do paciente..." (onDataFetched)="setNewData($event)"></app-search-bar>
   <button mat-fab color="primary" class="addNew" matTooltip="Clique para adicionar um novo paciente" (click)="addNewPatient()">
     <mat-icon>add</mat-icon>
   </button>
-  <section class="result-area">
-    <ng-container *ngFor="let patient of patients">
-      <app-patient-card [patient]="patient"></app-patient-card>
+  <section class="result-area" [class.grid]="patients.length > 0">
+    <ng-container *ngIf="patients.length > 0; else emptyResultSetMessage">
+      <app-patient-card *ngFor="let patient of patients" [patient]="patient"></app-patient-card>
     </ng-container>
+
+    <ng-template #emptyResultSetMessage>
+      <p class="empty-result-set-message">Sem resultados para mostrar</p>
+    </ng-template>
   </section>
 
 </section>

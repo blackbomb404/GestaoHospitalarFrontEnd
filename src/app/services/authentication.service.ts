@@ -20,10 +20,6 @@ export class AuthenticationService {
     );
   }
 
-  public home(){
-    return this.http.get<string>('http://localhost:8080/user');
-  }
-
   isUserLoggedIn(): boolean {
     const token = localStorage.getItem('token');
     if(!token || !token.startsWith('Bearer '))

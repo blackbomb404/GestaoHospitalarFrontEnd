@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PatientDialogComponent } from '../patient-dialog/patient-dialog.component';
 import { Patient } from '../models/Patient';
 import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { PatientService } from '../services/patient/patient.service';
 
 @Component({
   selector: 'app-patient-card',
@@ -13,13 +14,15 @@ export class PatientCardComponent implements OnInit {
   @Input() patient!: Patient;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private patientService: PatientService
   ) { }
 
   ngOnInit(): void {
   }
 
-  calculateAge(birthdate: Date) : number {
+  calculateAge(birthdateStr: string) : number {
+    const birthdate = new Date(birthdateStr);
     const today = new Date();
     let age = today.getFullYear() - birthdate.getFullYear();
     var m = today.getMonth() - birthdate.getMonth();
@@ -35,8 +38,8 @@ export class PatientCardComponent implements OnInit {
   }
 
   delete(){
-    const fullname = `${this.patient.firstname}  ${this.patient.lastname}`;
-    this.dialog.open(DeleteConfirmationDialogComponent, { position: { top: '6%' }, data: { target: 'patient', name: fullname } });
+    const fullname = `${this.patient.firstname} ${this.patient.lastname}`;
+    this.dialog.open(DeleteConfirmationDialogComponent, { position: { top: '6%' }, data: { target: 'patient', name: fullname, id: this.patient.id } });
   }
 
 }

@@ -25,6 +25,8 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="submit.click()" [disabled]="form.invalid">Actualizar</button>
+  <button mat-raised-button matDialogClose color="primary" (click)="submit.click()" [disabled]="form.invalid">
+    {{data.mode === 'update' ? 'Actualizar' : 'Salvar' }}
+  </button>
   <button mat-raised-button matDialogClose color="warn">Cancelar</button>
 </mat-dialog-actions>

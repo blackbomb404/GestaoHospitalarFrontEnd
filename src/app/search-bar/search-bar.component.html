@@ -1,6 +1,7 @@
 <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="searchForm">
   <mat-form-field appearance="legacy" class="searchField">
     <mat-label>{{placeholder}}</mat-label>
-    <input type="search" matInput [(ngModel)]="searchValue" name="searchValue" (keypress)="onKeyPress($event)">
+    <input type="search" matInput [(ngModel)]="searchValue" name="searchValue">
+    <mat-hint>Pressione ENTER para iniciar a busca</mat-hint>
   </mat-form-field>
 </form>

@@ -25,7 +25,7 @@ export class MedicCardComponent implements OnInit {
 
   delete(){
     const fullname = `${this.medic.firstname}  ${this.medic.lastname}`;
-    this.dialog.open(DeleteConfirmationDialogComponent, { position: { top: '6%' }, data: { target: 'medic', name: fullname } });
+    this.dialog.open(DeleteConfirmationDialogComponent, { position: { top: '6%' }, data: { target: 'medic', name: fullname, id: this.medic.id } });
   }
 
 }

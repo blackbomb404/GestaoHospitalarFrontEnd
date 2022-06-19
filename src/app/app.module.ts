@@ -31,6 +31,7 @@ import { MedicDialogComponent } from './medic-dialog/medic-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { SpecialtyDialogComponent } from './specialty-dialog/specialty-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/
     MedicCardComponent,
     SpecialtyComponent,
     MedicDialogComponent,
-    DeleteConfirmationDialogComponent
+    DeleteConfirmationDialogComponent,
+    SpecialtyDialogComponent
   ],
   imports: [
     BrowserModule,

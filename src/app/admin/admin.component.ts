@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
     username: 'blackbomb404',
     role: 'ADMIN'
   }
-  entity: string = '';
 
   constructor(
     private authService: AuthenticationService,

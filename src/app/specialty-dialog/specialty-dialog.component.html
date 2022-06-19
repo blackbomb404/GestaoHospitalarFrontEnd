@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>
+  {{data.mode === 'update' ? 'Actualizando informações' : 'Nova especialidade'}}
+</h1>
+<mat-dialog-content>
+  {{ form.value | json }}
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="id" class="hide">
+
+    <mat-form-field>
+      <mat-label>Especialidade</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <button type="submit" #submit></button>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matDialogClose color="primary" (click)="submit.click()" [disabled]="form.invalid">
+    {{data.mode === 'update' ? 'Actualizar' : 'Salvar' }}
+  </button>
+  <button mat-raised-button matDialogClose color="warn">Cancelar</button>
+</mat-dialog-actions>

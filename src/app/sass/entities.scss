@@ -2,7 +2,7 @@
   padding: 32px;
 
   .result-area {
-    display: grid;
+    // display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
     gap: 16px;
     justify-content: center;
@@ -16,4 +16,16 @@
 
 ::ng-deep .mat-tooltip {
   font-size: .75rem !important;
+}
+
+.empty-result-set-message {
+  font-size: clamp(16px, .75rem + 2vw, 32px);
+  color: rgba(0, 0, 0, .4);
+  font-weight: 400;
+  text-align: center;
+  margin: 32px 0;
+}
+
+.grid {
+  display: grid;
 }

@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Patient } from '../models/Patient';
+import { PatientService } from '../services/patient/patient.service';
+import { UtilService } from '../util.service';
 
 @Component({
   selector: 'app-patient-dialog',
@@ -9,21 +12,56 @@ import { Patient } from '../models/Patient';
   styleUrls: ['./patient-dialog.component.scss']
 })
 export class PatientDialogComponent implements OnInit {
-  model: Patient = this.data.model;
 
   form: FormGroup = new FormGroup({
-    firstname: new FormControl(this.data.mode === 'update' ? this.model.firstname : '', Validators.required),
-    lastname: new FormControl(this.data.mode === 'update' ? this.model.lastname : '', Validators.required),
-    birthdate: new FormControl(this.data.mode === 'update' ? this.model.birthdate : '', Validators.required)
+    id: new FormControl(this.data.mode === 'update' ? this.data.model.id : null),
+    firstname: new FormControl(this.data.mode === 'update' ? this.data.model.firstname : '', Validators.required),
+    lastname: new FormControl(this.data.mode === 'update' ? this.data.model.lastname : '', Validators.required),
+    birthdate: new FormControl(this.data.mode === 'update' ? this.data.model.birthdate : '', Validators.required)
   })
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { mode: string, model: Patient}) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { mode: 'new' | 'update', model: Patient },
+    private patientService: PatientService,
+    private router: Router,
+    private utilService: UtilService
+    ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.form.value);
+    const patient = this.form.value as Patient;
+
+    switch(this.data.mode){
+
+      case 'new':
+        this.patientService.add(patient).subscribe({
+          next: affectedRowsAmount => {
+            if(parseInt(affectedRowsAmount) > 0){
+              this.utilService.reloadCurrentComponent(this.router);
+            } else
+              alert('Nothing changed...');
+
+          },
+          error: error => console.log(error)
+        });
+        break;
+
+      case 'update':
+        const id: number = this.form.get('id')?.value;
+        this.patientService.update(patient, id).subscribe({
+          next: affectedRowsAmount => {
+            if(parseInt(affectedRowsAmount) > 0){
+              this.utilService.reloadCurrentComponent(this.router);
+            } else
+              alert('Nothing changed...');
+
+          },
+          error: error => console.log(error)
+        })
+        break;
+    }
   }
 
 }
