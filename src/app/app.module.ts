@@ -32,6 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { SpecialtyDialogComponent } from './specialty-dialog/specialty-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { SpecialtyDialogComponent } from './specialty-dialog/specialty-dialog.co
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule,
+    LayoutModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtAuthHttpInterceptorService, multi: true }

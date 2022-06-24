@@ -1,12 +1,12 @@
 <main>
   <mat-sidenav-container>
-    <mat-sidenav [opened]="sideMenuOpened" [mode]="'side'">
+    <mat-sidenav [opened]="sideMenuOpened" [mode]="sideMenuMode">
       <div class="avatar">
 
         <img [src]="user.profilePhoto" alt="profile photo" class="profile-photo">
         <div class="info">
           <p>Seja bem vindo <span class="username">{{user.username}}</span></p>
-          <p class="role">{{user.role}}</p>
+          <!-- <p class="role">{{user.role}}</p> -->
         </div>
 
       </div>
@@ -21,7 +21,7 @@
             </a>
             <mat-divider></mat-divider>
           </li>
-          <button mat-flat-button (click)="logOut()" class="logout-btn">Login</button>
+          <button mat-flat-button (click)="logOut()" class="logout-btn">Logout</button>
         </ul>
       </nav>
     </mat-sidenav>

@@ -35,6 +35,7 @@
 
     <div class="register-wrapper" back>
       <h1>Registro</h1>
+      <!-- {{registerForm.value | json}} -->
       <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
 
         <mat-form-field appearance="legacy">
@@ -58,6 +59,36 @@
           [class.error]="register_email?.touched">Por favor insira o seu email</mat-hint>
           <mat-hint *ngIf="register_email?.errors?.['email']"
           [class.error]="register_email?.touched">Por favor insira um email válido</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Salário</mat-label>
+          <input type="number" matInput formControlName="salary">
+          <mat-hint *ngIf="register_salary?.errors?.['required']"
+          [class.error]="register_salary?.touched">Por favor insira o seu salário</mat-hint>
+          <mat-hint *ngIf="register_salary?.errors?.['min']"
+          [class.error]="register_salary?.touched">O salário não pode ser negativo</mat-hint>
+        </mat-form-field>
+
+        <div style="display: flex; gap: 16px">
+          <ng-container *ngFor="let checkbox of checkBoxes">
+            <mat-checkbox [value]="checkbox.value" (change)="onCheckBoxChange($event)">{{checkbox.text}}</mat-checkbox>
+          </ng-container>
+        </div>
+        <!-- <input type="checkbox" formControlName="authorities" name="auth" value="USER">Usuário
+        <input type="checkbox" formControlName="authorities" name="auth" value="ADMIN">Administrador -->
+
+        <!-- <mat-hint *ngIf="register_username?.errors?.['required']"
+        [class.error]="register_username?.touched">Por favor insira o seu username<mat-hint> -->
+
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+
+          <mat-hint *ngIf="register_username?.errors?.['required']"
+          [class.error]="register_username?.touched">Por favor insira o seu username</mat-hint>
+
         </mat-form-field>
 
         <mat-form-field appearance="legacy">

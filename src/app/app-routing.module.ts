@@ -11,6 +11,7 @@ import { SpecialtyComponent } from './specialty/specialty.component';
 
 const routes: Routes = [
   { path: 'login-register', component: LoginRegisterComponent, canActivate: [NotAuthGuardGuard] },
+  { path: 'admin', redirectTo: 'admin/patient', pathMatch: 'full' },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
     { path: 'patient', component: PatientComponent },
     { path: 'medic', component: MedicComponent },

@@ -2,7 +2,6 @@
   {{data.mode === 'update' ? 'Actualizando informações' : 'Nova especialidade'}}
 </h1>
 <mat-dialog-content>
-  {{ form.value | json }}
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input formControlName="id" class="hide">
 

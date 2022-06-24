@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -40,11 +41,18 @@ export class PatientDialogComponent implements OnInit {
           next: affectedRowsAmount => {
             if(parseInt(affectedRowsAmount) > 0){
               this.utilService.reloadCurrentComponent(this.router);
-            } else
-              alert('Nothing changed...');
+            }
 
           },
-          error: error => console.log(error)
+          error: (error: HttpErrorResponse) => {
+            switch(error.status){
+              case 401:
+                // console.log(error.error);
+                const message = JSON.parse(error.error).message;
+                alert(message);
+                break;
+            }
+          }
         });
         break;
 
@@ -54,11 +62,18 @@ export class PatientDialogComponent implements OnInit {
           next: affectedRowsAmount => {
             if(parseInt(affectedRowsAmount) > 0){
               this.utilService.reloadCurrentComponent(this.router);
-            } else
-              alert('Nothing changed...');
+            }
 
           },
-          error: error => console.log(error)
+          error: (error: HttpErrorResponse) => {
+            switch(error.status){
+              case 401:
+                // console.log(error.error);
+                const message = JSON.parse(error.error).message;
+                alert(message);
+                break;
+            }
+          }
         })
         break;
     }

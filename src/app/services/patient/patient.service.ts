@@ -18,7 +18,7 @@ export class PatientService {
   public getAll(firstname?: string){
     if(firstname == undefined)
       return this.http.get<Patient[]>('http://localhost:8080/patient');
-    return this.http.get<Patient[]>('http://localhost:8080/patient', { params: { name: firstname } });
+    return this.http.get<Patient[]>('http://localhost:8080/patient', { params: { firstname } });
   }
 
   public update(patient: Patient, id: number){

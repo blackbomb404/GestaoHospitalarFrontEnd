@@ -17,7 +17,7 @@ export class MedicService {
   public getAll(firstname?: string){
     if(firstname == undefined)
       return this.http.get<Medic[]>('http://localhost:8080/medic');
-    return this.http.get<Medic[]>('http://localhost:8080/medic', { params: {name : firstname} });
+    return this.http.get<Medic[]>('http://localhost:8080/medic', { params: { firstname } });
   }
 
   public update(medic: { firstname: string, lastname: string, specialtyId: number }, id: number){

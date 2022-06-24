@@ -20,17 +20,29 @@ export class AuthenticationService {
     );
   }
 
-  isUserLoggedIn(): boolean {
+  isUserLoggedIn() : boolean {
     const token = localStorage.getItem('token');
     if(!token || !token.startsWith('Bearer '))
       return false;
 
-    const payload = atob(token.split('.')[1]);
-    const parsedPayload = JSON.parse(payload);
+    const parsedPayload = this.getParsedJwtPayload(token);
     return parsedPayload.exp > Date.now() / 1000;
+  }
+
+  getFirstname() : string | undefined {
+    if(!this.isUserLoggedIn())
+      return undefined;
+    const token = localStorage.getItem('token')!;
+    const parsedPayload = this.getParsedJwtPayload(token);
+    return parsedPayload.firstname;
   }
 
   logOut() {
     localStorage.removeItem('token');
+  }
+
+  private getParsedJwtPayload(token: string){
+    const payload = atob(token.split('.')[1]);
+    return JSON.parse(payload);
   }
 }

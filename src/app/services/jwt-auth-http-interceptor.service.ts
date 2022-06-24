@@ -10,6 +10,7 @@ export class JwtAuthHttpInterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     if(localStorage.getItem('token')){
       req = req.clone({
         setHeaders: {
@@ -17,7 +18,7 @@ export class JwtAuthHttpInterceptorService implements HttpInterceptor {
         }
       });
     }
-    console.log('Intercepted!');
+    // console.log('Intercepted!');
     return next.handle(req);
   }
 
